@@ -3,7 +3,7 @@
 
 Welcome to the setup guide for the Marimekko Assignment. Below you will find all the necessary steps to get both the Azure Functions app and the Next.js application up and running, along with their provisioning on Azure and Vercel.
 
-## Project vverview
+## Project overview
 
 ### Live site
 Access the live application here: [Marimekko assignment](https://marimekko-assignment.vercel.app)
