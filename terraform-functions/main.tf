@@ -38,7 +38,7 @@ resource "azurerm_function_app" "function_app" {
   location                   = var.location
   app_service_plan_id        = azurerm_service_plan.app_service_plan.id
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE" = "",
+    "WEBSITE_RUN_FROM_PACKAGE" = "1",
     "FUNCTIONS_WORKER_RUNTIME" = "node",
     "DATABASE_URL": var.database_url,
     "JWT_SECRET": var.jwt_secret
