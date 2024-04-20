@@ -44,11 +44,11 @@ const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
     <div className="flex flex-col items-center justify-center w-full">
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <Heading className="text-brand-black mb-6" level={3}>Verify login code</Heading>
-        <div className="flex space-x-2 mb-4">
+        <div className="flex space-x-2 mb-4 w-80 justify-between">
           {code.map((digit, index) => (
             <input
               key={index}
-              className="border-2 border-gray-300 p-2 w-14 text-center text-lg"
+              className="border-2 border-gray-300 w-14 h-14 text-center text-lg"
               type="number"
               maxLength={1}
               value={digit}
