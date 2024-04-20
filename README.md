@@ -2,7 +2,7 @@
 
 https://marimekko-assignment.vercel.app
 
-# Known issues and so on
+# Issues, future improvements
 See issues section
 
 # Provisioning
