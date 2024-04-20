@@ -30,22 +30,27 @@ const mockProducts = [
     name: "Toppa Pikkuinen Unikko",
     productId: "093441-219",
     priceVat0Euro: 350.0,
+    category: "Quilted jacket",
+    description:
+      "The Pikkuinen Unikko quilted jacket blends timeless style with practical warmth, making it an essential addition to your cool-weather wardrobe. Crafted from a durable, water-resistant fabric, this jacket features a vibrant rendition of the iconic Unikko poppy print, reimagined in a smaller scale for a modern twist.",
   },
   {
     name: "Kumarrus Unikko",
     productId: "093471-033",
     priceVat0Euro: 250.0,
+    category: "Skirt",
+    description:
+      "The Kumarrus Unikko skirt captures the essence of Marimekko's bold design ethos, showcasing the beloved Unikko print with a graceful, flowing twist. This skirt is cut from a soft, lightweight fabric that drapes beautifully, making it perfect for both casual and formal settings.",
   },
   {
     name: "Juhlissa Unikko",
     productId: "093469-099",
     priceVat0Euro: 300.0,
+    category: "Dress",
+    description:
+      "The Juhlissa Unikko dress is an elegant interpretation of Marimekko’s iconic Unikko pattern, tailored to bring sophistication to your evening wardrobe. Crafted from a luxurious black fabric, this dress features a subtle integration of the Unikko floral design in a tone-on-tone print that adds depth and texture without overpowering.",
   },
 ];
-
-const vat = {
-  vatPercentage: 24,
-};
 
 // Insert companies and users into the database.
 async function main() {
