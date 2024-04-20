@@ -2,19 +2,20 @@ import React from 'react';
 
 type ButtonProps = {
   variant: 'black' | 'white';
-  children: string;
+  children: React.ReactNode;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   width?: number;
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ variant, children, onClick, type = "button", width = 60 }) => {
+const Button: React.FC<ButtonProps> = ({ variant, children, onClick, type = "button", width = 60, disabled }) => {
 
   const background = variant === 'black' ? 'bg-brand-black' : 'bg-brand-white';
   const textColor = variant === 'black' ? 'text-brand-white' : 'text-brand-black';
 
   return (
-    <button type={type} onClick={onClick} className={`${background} ${textColor} p-2 w-${width} h-10`}>
+    <button disabled={disabled} type={type} onClick={onClick} className={`${background} ${textColor} p-2 w-${width} h-10`}>
       {children}
     </button>
   )

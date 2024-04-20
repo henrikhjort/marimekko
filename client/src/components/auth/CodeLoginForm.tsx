@@ -14,6 +14,8 @@ type CodeLoginForm = {
 const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
   const { loginWithCode } = useAuth();
   const [code, setCode] = useState(["", "", "", ""]);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleCodeChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const newCode = [...code];
@@ -37,6 +39,8 @@ const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
     const success = await loginWithCode(fullCode, emailToken);
     if (success && onSuccess) {
       onSuccess();
+    } else {
+      setError('Invalid code');
     }
   };
 
@@ -56,10 +60,19 @@ const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
               inputMode="numeric"
               pattern="[0-9]*"
               required
+              disabled={loading}
             />
           ))}
         </div>
-        <Button width={80} type="submit" variant="black">Verify code</Button>
+        {error && <span className="text-red-500 my-1">{error}</span>}
+        <Button
+          width={80}
+          type="submit"
+          variant="black"
+          disabled={loading}
+        >
+          Verify code
+        </Button>
       </form>
     </div>
   );

@@ -26,7 +26,7 @@ export default function Login() {
       <div className="flex flex-col flex-1 w-full bg-brand-black md:min-h-screen justify-center items-center space-y-4">
         <Heading className="text-brand-white" level={1}>Welcome</Heading>
         <span className="text-brand-white">{`Don't have an account?`}</span>
-        <Button onClick={() => alert('Not implemented')} variant="white">Sign up</Button>
+        <Button width={80} onClick={() => alert('Not implemented')} variant="white">Sign up</Button>
       </div>
     </div>
   );

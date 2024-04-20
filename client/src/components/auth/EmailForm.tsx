@@ -13,6 +13,8 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSuccess }) => {
   const { loginWithEmail } = useAuth();
   // State to hold the email value
   const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   // Function to handle the email input change
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,13 +23,18 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSuccess }) => {
 
   // Function to handle form submission
   const handleSubmit = async (event: FormEvent) => {
+    setLoading(true);
+    setError('');
     event.preventDefault();
     console.log('Email submitted:', email);
     const emailToken = await loginWithEmail(email);
     console.log('Email token:', emailToken);
     if (emailToken && onSuccess) {
       onSuccess(emailToken);
+    } else {
+      setError('Invalid email');
     }
+    setLoading(false);
   };
 
   return (
@@ -36,7 +43,8 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSuccess }) => {
         <Heading className="text-brand-black mb-6" level={3}>Marimekko B2B</Heading>
         <label className="text-brand-gray-400" htmlFor="email">Email</label>
         <input
-          className='border-2 border-gray-300 p-2 w-full my-2 text-black w-80'
+          onFocus={() => setError('')}
+          className={`border-2 border-gray-300 p-2 w-full my-2 text-black w-80`}
           type="email"
           id="email"
           name="email"
@@ -44,8 +52,17 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSuccess }) => {
           onChange={handleEmailChange}
           placeholder="Enter your email"
           required
+          disabled={loading}
         />
-        <Button width={80} type="submit" variant="black">Verify email</Button>
+        {error && <span className="text-red-500 my-1">{error}</span>}
+        <Button
+          width={80}
+          type="submit"
+          variant="black"
+          disabled={loading}
+        >
+          Verify email
+        </Button>
       </form>
     </div>
   );
