@@ -2,6 +2,9 @@
 
 https://marimekko-assignment.vercel.app
 
+# Known issues and so on
+See issues section
+
 # Provisioning
 
 ## Functions app
