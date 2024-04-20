@@ -32,8 +32,8 @@ return (
               <ImageGrid images={images} />
             </div>
             {headingText && paragraphText && (
-              <div className="flex flex-col py-4 justify-end p-2">
-                <Heading bold="semibold" level={5}>{headingText}</Heading>
+              <div className="flex flex-col py-4 justify-end p-2 m-2 space-y-2">
+                <Heading bold="bold" level={4}>{headingText}</Heading>
                 <p className="max-w-xl text-left">{paragraphText}</p>
               </div>
             )}
