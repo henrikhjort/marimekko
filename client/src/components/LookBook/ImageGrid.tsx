@@ -20,6 +20,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, handleImageClick }) => {
       <div onClick={() => handleImageClick(0)} className="relative flex flex-col grow cursor-pointer">
         {/* Left big image */}
           <Image
+            priority
             src={images[0].src}
             alt={images[0].alt}
             layout="fill"
@@ -32,6 +33,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, handleImageClick }) => {
         <div onClick={() => handleImageClick(1)} className="relative flex flex-row grow cursor-pointer">
           {/* Right side top solo image */}
           <Image
+            priority
             src={images[1].src}
             alt={images[1].alt}
             layout="fill"

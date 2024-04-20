@@ -72,6 +72,7 @@ return (
         <div className="lookbook-content-right md:flex hidden flex-1">
           <div onClick={() => handleImageClick(1)} className="relative flex flex-col grow cursor-pointer">
             <Image
+              priority
               src={images[1].src}
               alt={images[1].alt}
               layout="fill"
