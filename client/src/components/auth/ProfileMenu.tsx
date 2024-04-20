@@ -6,6 +6,7 @@ import {
   IconChevronDown,
   IconUser,
   IconLogout,
+  IconLogin,
 } from '@tabler/icons-react';
 
 import { useAuth } from '@/context/AuthContext';
@@ -25,7 +26,7 @@ const ProfileMenu: React.FC = () => {
 
   const menuTitle = () => {
     if (loggedIn && user) {
-      return `${user.firstName} ${user.lastName}`;
+      return `${user.firstName}`;
     }
     return 'Login';
   }
@@ -81,14 +82,18 @@ const ProfileMenu: React.FC = () => {
       <Button
         onClick={() => router.push('/login')}
         pr={12}
+        rightSection={
+          <IconLogin style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+        }
         >
+          
         <span className="text-brand-white">Login</span>
       </Button>
     )
   }
 
   return (
-    <div className="absolute top-4 right-4">
+    <div className="absolute top-1 right-1">
       <Menu
         transitionProps={{ transition: 'pop-top-right' }}
         position="bottom-end"

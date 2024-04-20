@@ -6,6 +6,9 @@ import { getEmailToken } from "@/lib/token";
 import { AuthProvider } from "@/context/AuthContext";
 
 import CodeLoginForm from "@/components/auth/CodeLoginForm";
+import Heading from "@/components/basic/Heading";
+import Button from "@/components/basic/Button";
+import '../../../app/globals.css';
 
 type CodeLoginPageProps = {
   emailToken: string;
@@ -28,13 +31,18 @@ export default function CodeLoginPage({ emailToken }: CodeLoginPageProps) {
   }
 
   return (
-    <AuthProvider>
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <CodeLoginForm onSuccess={onSuccess} />
+    <div className="flex md:flex-row flex-col w-full items-center justify-center bg-blue-100 min-h-screen login">
+      <div className="flex flex-col flex-1 w-full bg-brand-white md:min-h-screen justify-center items-center p-16">
+        <AuthProvider>
+          <CodeLoginForm onSuccess={onSuccess} />
+        </AuthProvider>
+      </div>
+      <div className="flex flex-col flex-1 w-full bg-brand-black md:min-h-screen justify-center items-center space-y-4">
+        <Heading className="text-brand-white" level={1}>Welcome</Heading>
+        <span className="text-brand-white">{`Don't have an account?`}</span>
+        <Button onClick={() => alert('Not implemented')} variant="white">Sign up</Button>
       </div>
     </div>
-    </AuthProvider>
   );
 }
 

@@ -5,12 +5,13 @@ type HeadingProps = {
   bold?: 'extrabold' | 'bold' | 'semibold' | 'medium' | 'normal';
   capitalize?: boolean;
   children: string;
+  className?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ level, children, bold = 'normal', capitalize }) => {
+const Heading: React.FC<HeadingProps> = ({ level, children, bold = 'normal', capitalize, className }) => {
 
   function renderHeading() {
-    const baseClass = `${capitalize ? 'uppercase' : ''} font-${bold}`;
+    const baseClass = `${className} ${capitalize ? 'uppercase' : ''} font-${bold}`;
     switch (level) {
       case 1:
         return <h1 className={`text-4xl lg:text-6xl ${baseClass}`}>{children}</h1>;

@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, FormEvent } from 'react';
 
+import Button from '../basic/Button';
+import Heading from '../basic/Heading';
 import { useAuth } from '@/context/AuthContext';
 
 type EmailFormProps = {
@@ -29,20 +31,23 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input
-        className='border-2 border-gray-300 p-2 w-full mt-2 text-black'
-        type="email"
-        id="email"
-        name="email"
-        value={email}
-        onChange={handleEmailChange}
-        placeholder="Enter your email"
-        required
-      />
-        <button className="bg-red-500 rounded" type="submit">Submit</button>
-    </form>
+    <div className="flex flex-col items-center justify-center w-full">
+      <form onSubmit={handleSubmit} className="flex flex-col">
+        <Heading className="text-brand-black mb-6" level={3}>Marimekko B2B</Heading>
+        <label className="text-brand-gray-400" htmlFor="email">Email</label>
+        <input
+          className='border-2 border-gray-300 p-2 w-full my-2 text-black w-80'
+          type="email"
+          id="email"
+          name="email"
+          value={email}
+          onChange={handleEmailChange}
+          placeholder="Enter your email"
+          required
+        />
+        <Button width={80} type="submit" variant="black">Verify email</Button>
+      </form>
+    </div>
   );
 };
 

@@ -7,13 +7,18 @@ import ProductSection from './ProductSection';
 
 const ProductCatalog: React.FC= () => {
   const { products } = useProducts();
-  console.log('Products:', products);
+  if (!products || products.length === 0) {
+    return null;
+  }
 
+  // Iterate over products and render ProductSection for each
+  // Set heading and paragraph text for first product
   return <div className="flex flex-col space-y-8 w-full md:px-8 px-2">
     {products.map((product, index) => {
       const images = getImagesForProduct(product.productId);
       return (
         <ProductSection
+          index={index}
           key={product.productId}
           product={product}
           images={images}

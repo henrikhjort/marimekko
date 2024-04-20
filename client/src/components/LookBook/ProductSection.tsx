@@ -8,23 +8,31 @@ import ImageGrid from './ImageGrid';
 import Heading from '../basic/Heading';
 
 type ProductSectionProps = {
+  index?: number;
   product: Product;
   images: BrandImage[];
   headingText?: string;
   paragraphText?: string;
 }
 
-const ProductSection: React.FC<ProductSectionProps> = ({ product, images, headingText, paragraphText }) => {
-  return (
+const ProductSection: React.FC<ProductSectionProps> = ({ index, product, images, headingText, paragraphText }) => {
+  if (images.length !== 5) {
+    throw new Error('ProductSection requires 5 images');
+  }
+
+  // Alternate left and right side based on index
+  const isEven = index !== undefined && index % 2 === 0;
+
+return (
     <section className={`lookbook-product-${product.productId} flex flex-col w-full h-[calc(100vh-250px)]`}>
-      <div className="lookbook-content-rows flex flex-col md:flex-row w-full h-full">
+      <div className={`lookbook-content-rows flex ${isEven ? 'flex-col md:flex-row' : 'flex-col md:flex-row-reverse'} w-full h-full`}>
         <div className="lookbook-content-left flex flex-1 items-center justify-center">
           <div className="flex flex-col w-full h-full">
             <div className="flex flex-col" style={{ flexGrow: 8 }}>
               <ImageGrid images={images} />
             </div>
             {headingText && paragraphText && (
-              <div className="flex flex-col py-4 justify-end">
+              <div className="flex flex-col py-4 justify-end p-2">
                 <Heading bold="semibold" level={5}>{headingText}</Heading>
                 <p className="max-w-xl text-left">{paragraphText}</p>
               </div>
@@ -33,15 +41,15 @@ const ProductSection: React.FC<ProductSectionProps> = ({ product, images, headin
         </div>
         <div className="lookbook-content-right flex flex-1">
           <div className="relative flex flex-col grow">
-          <Image
-            src={images[0].src}
-            alt={images[0].alt}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="top"
-            className="absolute inset-0 p-2"
-          />
-        </div>
+            <Image
+              src={images[0].src}
+              alt={images[0].alt}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="top"
+              className="absolute inset-0 p-2"
+            />
+          </div>
         </div>
       </div>
     </section>
