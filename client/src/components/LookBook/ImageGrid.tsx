@@ -1,52 +1,22 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { Modal } from '@mantine/core';
 
 import type BrandImage from '../../../types/BrandImage';
 import './lookbook.css';
 
 type ImageGridProps = {
   images: BrandImage[];
+  handleImageClick: (index: number) => void;
 };
 
-const ImageGrid: React.FC<ImageGridProps> = ({ images }) => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalImage, setModalImage] = useState<BrandImage | null>(null);
-
+const ImageGrid: React.FC<ImageGridProps> = ({ images, handleImageClick }) => {
   if (images.length !== 5) {
     throw new Error('ImageGrid requires 5 images');
   }
 
-  function handleImageClick (index: number) {
-    console.log(index);
-    setModalImage(images[index]);
-    setModalOpen(true);
-  };
-
-  function closeModal() {
-    setModalOpen(false);
-    setModalImage(null);
-  };
-
   return (
     <div className="flex flex-row grow">
-      <Modal
-        opened={modalOpen}
-        onClose={closeModal}
-        size="auto"
-      >
-        <div className="min-h-100vh">
-          {modalImage && (
-            <Image
-              src={modalImage.src}
-              alt={modalImage.alt}
-              width={1200}
-              height={1200}
-            />
-          )}
-        </div>
-      </Modal>
       <div onClick={() => handleImageClick(0)} className="relative flex flex-col grow cursor-pointer">
         {/* Left big image */}
           <Image
