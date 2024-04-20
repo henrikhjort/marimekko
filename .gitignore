@@ -55,3 +55,9 @@ terraform-functions/terraform.tfstate*
 terraform-functions/outputs.tf*
 terraform-functions/.terraform
 terraform-functions/.terraform*
+
+terraform-client/terraform.tfvars*
+terraform-client/terraform.tfstate*
+terraform-client/outputs.tf*
+terraform-client/.terraform
+terraform-client/.terraform*
