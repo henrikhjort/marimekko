@@ -62,7 +62,7 @@ export const images: BrandImage[] = [
     productId: "093441-219",
   },
   {
-    src: "/brandImages/pikkuinenUnikko/pikkuinen_unikko_2.jpg",
+    src: "/brandImages/pikkuinenUnikko/pikkuinen_unikko_3.jpg",
     alt: "Pikkuinen Unikko 3",
     productId: "093441-219",
   },

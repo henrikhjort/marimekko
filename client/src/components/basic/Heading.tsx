@@ -10,7 +10,7 @@ type HeadingProps = {
 const Heading: React.FC<HeadingProps> = ({ level, children, bold = 'normal', capitalize }) => {
 
   function renderHeading() {
-    const baseClass = `m-4 ${capitalize ? 'uppercase' : ''} font-${bold}`;
+    const baseClass = `${capitalize ? 'uppercase' : ''} font-${bold}`;
     switch (level) {
       case 1:
         return <h1 className={`text-4xl lg:text-6xl ${baseClass}`}>{children}</h1>;

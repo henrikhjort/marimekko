@@ -1,15 +1,6 @@
 .image-container {
-
-  width: 100%;
-
-  > div {
-    position: unset !important;
-  }
-
-  .image {
-    object-fit: contain;
-    width: 100% !important;
-    position: relative !important;
-    height: unset !important;
-  }
+  width: 300px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
 }
