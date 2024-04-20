@@ -1,101 +1,121 @@
-# Website
 
-https://marimekko-assignment.vercel.app
+# Marimekko assignment setup guide
 
-# Issues, future improvements
-See issues section
+Welcome to the setup guide for the Marimekko Assignment. Below you will find all the necessary steps to get both the Azure Functions app and the Next.js application up and running, along with their provisioning on Azure and Vercel.
 
-# Provisioning
+## Project vverview
 
-## Functions app
+### Live site
+Access the live application here: [Marimekko Assignment](https://marimekko-assignment.vercel.app)
 
-Enter correct variables in `terraform-functions/terraform.tfvars`
-
+You can log in using the following test credentials:
 ```
-project = xxxx
-environment = xxxx
-location = xxxx
-database_url = xxxx
-jwt_secret = xxxx
+email: maija.poppanen@email.com
+code: 1234
 ```
 
-Provision Azure resources
-```
-cd terraform-functions
-terraform apply
-```
+### Key Features
+- Serverless API hosted on Azure Functions
+- Frontend powered by Next.js and hosted on Vercel
 
-Download function app publish profile from Azure portal
+### Future Improvements
+For potential enhancements and known issues, please refer to the [Issues section](https://github.com/henrikhjort/marimekko/issues) on GitHub.
 
-Enable Access-Control-Allow-Credentials in portal.
-Set origins to https://marimekko-assignment.vercel.app/
+## Setup Instructions
 
-Set publish profile in github secrets
+### Provisioning Azure Functions
 
-https://github.com/henrikhjort/marimekko/settings/secrets/actions
-```
-AZURE_PUBLISH_PROFILE = xxxx
-```
+1. **Configure Terraform variables**  
+   Navigate to the `terraform-functions` directory and create a `terraform.tfvars` file with the following content:
+   ```
+   project = "your_project_name"
+   environment = "dev"
+   location = "your_azure_region"
+   database_url = "your_database_connection_string"
+   jwt_secret = "your_jwt_secret"
+   ```
 
-## Nextjs
+2. **Initialize and apply Terraform configuration**  
+   Execute the following commands to provision the Azure resources:
+   ```bash
+   terraform init
+   terraform apply
+   ```
 
-Link github repo with Vercel account
+3. **Setup GitHub secrets**  
+   Obtain the Azure Function App publish profile from the Azure portal and add it as a GitHub secret for automated deployments:
+   - **Secret Name**: `AZURE_PUBLISH_PROFILE`
+   - **Secret Value**: `your_azure_publish_profile`
 
-Enter correct variables in `terraform-client/terraform.tfvars`
+### Setting up the Next.js Application on Vercel
 
-```
-project_name = xxxx
-team_id = xxxx
-project_root = xxxx
-source_branch = xxxx
-repository_name = xxxx
-api_token = xxxx
-prod_api_url = xxxx
-```
+1. **Connect GitHub Repository**  
+   Link your GitHub repository with your Vercel account for continuous deployment.
 
-# Local development
+2. **Obtain Vercel API token (needed in the next step)
 
-## Functions app
+3. **Configure Terraform Variables for Vercel**  
+   Navigate to `terraform-client` and set up the `terraform.tfvars` file:
+   ```
+   project_name = "MarimekkoAssignment"
+   team_id = "your_vercel_team_id"
+   project_root = "path_to_your_nextjs_project_root"
+   source_branch = "main"
+   repository_name = "your_github_repository_name"
+   api_token = "your_vercel_api_token"
+   prod_api_url = "https://marimekko-assignment.vercel.app/api"
+   ```
 
-Install dependencies
-```
-npm i
-```
+4. **Initialize and apply Terraform configuration**  
+   Execute the following commands to provision the Vercel resources:
+   ```bash
+   terraform init
+   terraform apply
+   ```
 
-Set .env variables in `functions/.env`
+### Local Development Setup
 
-```
-DATABASE_URL= xxxx
-JWT_SECRET= xxxx
-```
+#### Azure Functions App
 
-Seed database
+1. **Install Dependencies**
+   ```bash
+   cd functions
+   npm install
+   ```
 
-```
-npm run seed
-```
+2. **Configure Local Environment Variables**  
+   Create a `.env` file in the `functions` directory with the following entries:
+   ```
+   DATABASE_URL=your_local_database_url
+   JWT_SECRET=your_jwt_secret
+   ```
 
-Start app
+3. **Seed the Database**
+   ```bash
+   npm run seed
+   ```
 
-```
-npm run start
-```
+4. **Start the Functions App**
+   ```bash
+   npm start
+   ```
 
-## Nextjs
+#### Next.js Application
 
-Install dependencies
-```
-npm i
-```
+1. **Install Dependencies**
+   ```bash
+   cd client
+   npm install
+   ```
 
-Set .env variables in `client/.env.local`
+2. **Set Local Environment Variables**  
+   Create a `.env.local` file in the `client` directory:
+   ```
+   NEXT_PUBLIC_API_URL=http://127.0.0.1:7071/api
+   ```
 
-```
-NEXT_PUBLIC_API_URL=http://127.0.0.1:7071/api
-```
+3. **Run the Development Server**
+   ```bash
+   npm run dev
+   ```
 
-Start app
-
-```
-npm run dev
-```
