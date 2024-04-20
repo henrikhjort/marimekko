@@ -11,7 +11,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
-interface User {
+type User = {
   id: number;
   firstName: string;
   lastName: string;

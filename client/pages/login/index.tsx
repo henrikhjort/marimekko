@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from 'next/navigation'
-import EmailForm from "@/components/EmailForm";
+import EmailForm from "@/components/auth/EmailForm";
 import { AuthProvider } from "@/context/AuthContext";
 
 export default function Login() {

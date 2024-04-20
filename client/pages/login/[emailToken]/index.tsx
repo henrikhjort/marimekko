@@ -5,7 +5,7 @@ import { GetServerSideProps } from "next";
 import { getEmailToken } from "@/lib/token";
 import { AuthProvider } from "@/context/AuthContext";
 
-import CodeLoginForm from "@/components/CodeLoginForm";
+import CodeLoginForm from "@/components/auth/CodeLoginForm";
 
 type CodeLoginPageProps = {
   emailToken: string;

@@ -2,9 +2,10 @@ import { createTheme, MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 
 import { AuthProvider } from "@/context/AuthContext";
-import ProfileMenu from "@/components/ProfileMenu";
+import { ProductProvider } from '@/context/ProductContext';
+import ProfileMenu from "@/components/auth/ProfileMenu";
 import Header from '@/components/LookBook/Header';
-import ImageGrid from '@/components/LookBook/ImageGrid';
+import ProductCatalog from '@/components/LookBook/ProductCatalog';
 
 const theme = createTheme({
   colors: {
@@ -44,16 +45,9 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-start w-full bg-brand-white">
         <ProfileMenu />
         <Header />
-        <section className="lookbook-content flex flex-col w-full md:px-8 px-2">
-          <div className="lookbook-content-rows flex flex-2 flex-col md:flex-row md:space-x-8 h-1/3">
-            <div className="lookbook-content-left flex flex-1 items-center justify-center">
-              <ImageGrid />
-            </div>
-            <div className="lookbook-content-left flex flex-1 bg-purple-500">
-              oikea
-            </div>
-          </div>
-        </section>
+        <ProductProvider>
+          <ProductCatalog />
+        </ProductProvider>
       </main>
       </AuthProvider>
     </MantineProvider>

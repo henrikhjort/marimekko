@@ -1,11 +1,15 @@
-.image-transition {
-  transition: opacity 0.5s ease-in-out;
-}
+.image-container {
 
-.image-hidden {
-  opacity: 0;
-}
+  width: 100%;
 
-.test {
-  background-color: red;
+  > div {
+    position: unset !important;
+  }
+
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
 }
