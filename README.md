@@ -6,7 +6,7 @@ Welcome to the setup guide for the Marimekko Assignment. Below you will find all
 ## Project vverview
 
 ### Live site
-Access the live application here: [Marimekko Assignment](https://marimekko-assignment.vercel.app)
+Access the live application here: [Marimekko assignment](https://marimekko-assignment.vercel.app)
 
 You can log in using the following test credentials:
 ```
