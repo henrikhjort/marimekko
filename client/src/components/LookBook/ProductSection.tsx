@@ -70,10 +70,10 @@ return (
           </div>
         </div>
         <div className="lookbook-content-right md:flex hidden flex-1">
-          <div onClick={() => handleImageClick(0)} className="relative flex flex-col grow cursor-pointer">
+          <div onClick={() => handleImageClick(1)} className="relative flex flex-col grow cursor-pointer">
             <Image
-              src={images[0].src}
-              alt={images[0].alt}
+              src={images[1].src}
+              alt={images[1].alt}
               layout="fill"
               objectFit="cover"
               objectPosition="top"
