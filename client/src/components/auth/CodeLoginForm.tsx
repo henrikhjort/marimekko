@@ -18,6 +18,7 @@ const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
 
   // Function to handle form submission
   const handleSubmit = async (event: FormEvent) => {
+    console.log(1);
     event.preventDefault();
     const emailToken = getEmailToken();
     if (!emailToken) {
