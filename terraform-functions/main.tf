@@ -40,11 +40,13 @@ resource "azurerm_function_app" "function_app" {
   app_settings = {
     "WEBSITE_RUN_FROM_PACKAGE" = "",
     "FUNCTIONS_WORKER_RUNTIME" = "node",
+    "DATABASE_URL": var.database_url,
+    "JWT_SECRET": var.jwt_secret
   }
   os_type = "linux"
   site_config {
     linux_fx_version          = "node|18"
-    use_32_bit_worker_process = falses
+    use_32_bit_worker_process = false
   }
   storage_account_name       = azurerm_storage_account.storage_account.name
   storage_account_access_key = azurerm_storage_account.storage_account.primary_access_key
