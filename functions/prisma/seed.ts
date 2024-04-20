@@ -43,6 +43,28 @@ const mockUsers = [
   },
 ];
 
+const mockProducts = [
+  {
+    name: "Toppa Pikkuinen Unikko",
+    productId: "093441-219",
+    priceVat0Euro: 350.0,
+  },
+  {
+    name: "Kumarrus Unikko",
+    productId: "093471-033",
+    priceVat0Euro: 250.0,
+  },
+  {
+    name: "Juhlissa Unikko",
+    productId: "093469-099",
+    priceVat0Euro: 300.0,
+  },
+];
+
+const vat = {
+  vatPercentage: 24,
+};
+
 // Insert companies and users into the database.
 async function main() {
   for (const [index, company] of mockCompanies.entries()) {
@@ -57,6 +79,12 @@ async function main() {
       data: mockUserData,
     });
     console.log(`Created user with id: ${createdUser.id}`);
+  }
+  for (const product of mockProducts) {
+    const createdProduct = await prisma.product.create({
+      data: product,
+    });
+    console.log(`Created product with id: ${createdProduct.id}`);
   }
 }
 
