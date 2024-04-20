@@ -28,7 +28,7 @@ return (
       <div className={`lookbook-content-rows flex ${isEven ? 'flex-col md:flex-row' : 'flex-col md:flex-row-reverse'} w-full h-full`}>
         <div className="lookbook-content-left flex flex-1 items-center justify-center">
           <div className="flex flex-col w-full h-full">
-            <div className="flex flex-col" style={{ flexGrow: 8 }}>
+            <div className="flex flex-col h-full">
               <ImageGrid images={images} />
             </div>
             {headingText && paragraphText && (
@@ -39,7 +39,7 @@ return (
             )}
           </div>
         </div>
-        <div className="lookbook-content-right flex flex-1">
+        <div className="lookbook-content-right md:flex hidden flex-1">
           <div className="relative flex flex-col grow">
             <Image
               src={images[0].src}
