@@ -5,8 +5,11 @@ import { Modal } from '@mantine/core';
 
 import type { Product } from '@/context/ProductContext';
 import type BrandImage from '../../../types/BrandImage';
+
+import Separator from '../basic/Separator';
 import ImageGrid from './ImageGrid';
 import Heading from '../basic/Heading';
+import ProductInfo from './ProductInfo';
 
 type ProductSectionProps = {
   index?: number;
@@ -57,20 +60,21 @@ return (
       </Modal>
       <div className={`lookbook-content-rows flex ${isEven ? 'flex-col md:flex-row' : 'flex-col md:flex-row-reverse'} w-full h-full`}>
         <div className="lookbook-content-left flex flex-1 items-center justify-center">
-          <div className="flex flex-col w-full h-full">
+          <div className="flex flex-col w-full h-full m-2">
             <div className="flex flex-col h-full">
               <ImageGrid images={images} handleImageClick={handleImageClick} />
             </div>
             {headingText && paragraphText && (
-              <div className="flex flex-col py-4 justify-end p-2 m-2 space-y-2">
-                <Heading bold="bold" level={4}>{headingText}</Heading>
+              <div className="flex flex-col py-4 justify-end space-y-2">
+                <Heading bold="semibold" level={4}>{headingText}</Heading>
                 <p className="max-w-xl text-left">{paragraphText}</p>
               </div>
             )}
+            <Separator />
           </div>
         </div>
-        <div className="lookbook-content-right md:flex hidden flex-1">
-          <div onClick={() => handleImageClick(1)} className="relative flex flex-col grow cursor-pointer">
+        <div className="lookbook-content-right md:flex md:flex-row flex-col flex-1">
+          <div onClick={() => handleImageClick(1)} className="relative md:flex hidden flex-col grow cursor-pointer bg-blue-300">
             <Image
               priority
               src={images[1].src}
@@ -78,9 +82,10 @@ return (
               layout="fill"
               objectFit="cover"
               objectPosition="top"
-              className="absolute inset-0 p-2"
+              className="absolute inset-0 p-0"
             />
           </div>
+          <ProductInfo product={product} />
         </div>
       </div>
     </section>

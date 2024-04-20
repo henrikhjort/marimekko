@@ -4,3 +4,13 @@
   position: relative;
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  .product-image-wrapper {
+    aspect-ratio: 1 / 2;
+  }
+  .product-image-wrapper-small {
+    aspect-ratio: 3 / 2;
+  }
+}
+

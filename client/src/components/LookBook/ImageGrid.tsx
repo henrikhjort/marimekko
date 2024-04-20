@@ -2,7 +2,10 @@
 import React from 'react';
 import Image from 'next/image';
 
+import Heading from '../basic/Heading';
+
 import type BrandImage from '../../../types/BrandImage';
+import type { Product } from '@/context/ProductContext';
 import './lookbook.css';
 
 type ImageGridProps = {
@@ -16,8 +19,8 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, handleImageClick }) => {
   }
 
   return (
-    <div className="flex flex-row grow">
-      <div onClick={() => handleImageClick(0)} className="relative flex flex-col grow cursor-pointer">
+    <div className="image-grid flex md:flex-row flex-col grow w-full">
+      <div onClick={() => handleImageClick(0)} className="large-image product-image-wrapper-small relative md:flex flex-col grow cursor-pointer">
         {/* Left big image */}
           <Image
             priority
@@ -29,8 +32,8 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, handleImageClick }) => {
             className="absolute inset-0 p-2"
           />
       </div>
-      <div className="flex flex-col grow">
-        <div onClick={() => handleImageClick(1)} className="relative flex flex-row grow cursor-pointer">
+      <div className="small-images md:flex flex-col grow">
+        <div onClick={() => handleImageClick(1)} className="relative md:flex hidden md:flex-row flex-col grow cursor-pointer">
           {/* Right side top solo image */}
           <Image
             priority
@@ -42,7 +45,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, handleImageClick }) => {
             className="absolute inset-0 p-2"
           />
         </div>
-        <div className="flex flex-row grow">
+        <div className="flex md:flex-row flex-col grow">
           {/* Bottom image pair */}
           <div onClick={() => handleImageClick(2)} className="relative flex flex-col grow cursor-pointer">
             {/* Bottom image 1 */}

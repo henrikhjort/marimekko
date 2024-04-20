@@ -10,6 +10,8 @@ interface ProductContextType {
 export type Product = {
   id: string;
   name: string;
+  description: string;
+  category: string;
   productId: string;
   priceVat0Euro: number;
 }
