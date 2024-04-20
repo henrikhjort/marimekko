@@ -1,15 +1,11 @@
 import prisma from "../prisma/client";
-
 import type { User } from "@prisma/client";
 
-// Omit id and createdAt fields from User type
+// Define a type that omits the 'id' and 'createdAt' for MongoDB
 type RegisterUserData = Omit<User, "id" | "createdAt">;
 
 /**
  * Register a new user.
- *
- * @param data User data without id and createdAt fields
- * @returns User object if user was created successfully, null otherwise
  */
 export async function registerUser(
   data: RegisterUserData
@@ -20,9 +16,7 @@ export async function registerUser(
     });
   } catch (error) {
     console.error(
-      `Failed to create User with data: ${JSON.stringify(
-        data
-      )}. Error: ${error}`
+      `Failed to create User: ${JSON.stringify(data)}. Error: ${error}`
     );
     return null;
   }
@@ -30,16 +24,13 @@ export async function registerUser(
 
 /**
  * Verify if email exists in the database.
- *
- * @param email Email
- * @returns True if email exists, false otherwise
  */
 export async function verifyEmailExists(email: string): Promise<boolean> {
   try {
-    const user = await prisma.user.findUnique({
+    const count = await prisma.user.count({
       where: { email },
     });
-    return user !== null;
+    return count > 0;
   } catch (error) {
     console.error(`Failed to verify email: ${email}. Error: ${error}`);
     return false;
@@ -48,16 +39,11 @@ export async function verifyEmailExists(email: string): Promise<boolean> {
 
 /**
  * Get user by email.
- *
- * @param email User email
- * @returns User object if user was found, null otherwise
  */
 export async function getUserByEmail(email: string): Promise<User | null> {
   try {
     return await prisma.user.findUnique({
-      where: {
-        email,
-      },
+      where: { email },
     });
   } catch (error) {
     console.error(`Failed to find user with email: ${email}. Error: ${error}`);
@@ -65,22 +51,25 @@ export async function getUserByEmail(email: string): Promise<User | null> {
   }
 }
 
+/**
+ * Get user by ID, excluding the codeHash field.
+ */
 export async function getUserById(
-  userId: number
+  userId: string
 ): Promise<Omit<User, "codeHash"> | null> {
   try {
     const user = await prisma.user.findUnique({
-      where: {
-        id: userId,
+      where: { id: userId },
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        createdAt: true,
+        // Exclude codeHash by not selecting it
       },
     });
-    // Return user without codeHash field
-    if (user) {
-      const { codeHash, ...userData } = user;
-      return userData;
-    } else {
-      return null;
-    }
+    return user;
   } catch (error) {
     console.error(`Failed to find user with id: ${userId}. Error: ${error}`);
     return null;

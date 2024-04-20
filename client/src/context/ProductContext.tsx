@@ -8,7 +8,7 @@ interface ProductContextType {
 }
 
 export type Product = {
-  id: number;
+  id: string;
   name: string;
   productId: string;
   priceVat0Euro: number;

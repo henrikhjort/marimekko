@@ -126,19 +126,14 @@ export function getAccessTokenFromRequest(req: HttpRequest): string | null {
  * @param accessToken Access token string
  * @returns User ID if token is valid, otherwise null
  */
-export function verifyAccessToken(accessToken: string): number | null {
+export function verifyAccessToken(accessToken: string): string | null {
   try {
     const decoded = jwt.verify(accessToken, getSecret()) as { userId: string };
     if (!decoded.userId) {
       console.error("User ID not found in token");
       return null;
     }
-    // Check that the user ID is a number
-    if (isNaN(Number(decoded.userId))) {
-      console.error(`User ID is not a number: ${decoded.userId}`);
-      return null;
-    }
-    return Number(decoded.userId);
+    return decoded.userId;
   } catch (error) {
     console.error(`Failed to verify access token: ${error}`);
     return null;
