@@ -10,6 +10,7 @@ Publish
 *.cscfg
 *.Cache
 project.lock.json
+.DS_Store
 
 /packages
 /TestResults
@@ -21,6 +22,7 @@ project.lock.json
 .secrets
 appsettings.json
 local.settings.json
+.vscode*
 
 node_modules
 dist

@@ -13,6 +13,12 @@ import {
 curl -X POST http://localhost:7071/api/auth/check-email \
 -H "Content-Type: application/json" \
 -d '{"email": "maija.poppanen@email.com"}'
+
+curl -X POST https://hnrk-test-function-app.azurewebsites.net/api/auth/check-email \
+-H "Content-Type: application/json" \
+-d '{"email": "maija.poppanen@email.com"}'
+
+
 */
 
 // Email does not exist
