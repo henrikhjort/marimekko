@@ -104,7 +104,12 @@ For potential enhancements and known issues, please refer to the [Issues section
    Please refer to local.settings.template.json
    The file content should be good as is.
 
-4. **Start the Functions App**
+4. **Generate prisma client**
+   ```bash
+   npx prisma generate
+   ```
+
+5. **Start the Functions App**
    ```bash
    npm start
    ```
