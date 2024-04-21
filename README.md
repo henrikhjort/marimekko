@@ -82,6 +82,11 @@ For potential enhancements and known issues, please refer to the [Issues section
 
 ### Local Development Setup
 
+**Dependencies**
+* prisma
+* next
+* azure core tools
+
 #### Azure Functions App
 
 1. **Install Dependencies**
