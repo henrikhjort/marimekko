@@ -27,6 +27,9 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     async function fetchProducts() {
       try {
         const apiUrl = getApiUrl();
+        if (!apiUrl) {
+          throw new Error('API URL is not set');
+        }
         const res = await fetch(`${apiUrl}/products`);
         if (!res.ok) {
           console.log('Error fetching products:', res);

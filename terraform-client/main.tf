@@ -42,3 +42,11 @@ resource "vercel_project_environment_variable" "prod_api_url" {
   value      = "${var.prod_api_url}"
   target     = ["production"]
 }
+
+resource "vercel_project_environment_variable" "prod_api_key" {
+  project_id = vercel_project.marimekko.id
+  team_id   = "${var.team_id}"
+  key        = "NEXT_PUBLIC_API_KEY"
+  value      = "${var.prod_api_key}"
+  target     = ["production"]
+}

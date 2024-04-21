@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 import { storeEmailToken, storeAccessToken, getAccessToken, removeAccessToken, removeEmailToken } from '@/lib/token';
-import { getApiUrl } from '@/lib/helpers';
+import { getApiUrl, constructHeaders } from '@/lib/helpers';
 
 export interface AuthContextType {
   user: User | null;
@@ -60,10 +60,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (!accessToken) return;
       try {
         const apiUrl = getApiUrl();
+        if (!apiUrl) {
+          console.error('API URL is not set');
+          return;
+        }
+        const headers = constructHeaders(accessToken);
         const res = await fetch(`${apiUrl}/user`, {
-          headers: {
-            'Authorization': `Bearer ${accessToken}`,
-          },
+          headers: headers,
         });
         if (!res.ok) {
           console.log('Error fetching user:', res);
@@ -122,11 +125,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   async function verifyEmail(email: string): Promise<string | null> {
     try {
       const apiUrl = getApiUrl();
+      if (!apiUrl) {
+        console.error('API URL is not set');
+        return null;
+      }
+      const headers = constructHeaders();
       const res = await fetch(`${apiUrl}/auth/check-email`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          },
+        headers: headers,
           body: JSON.stringify({ email }),
         });
       console.log(res);
@@ -155,12 +161,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   async function verifyCode(code: string, emailToken: string): Promise<string | null> {
     try {
       const apiUrl = getApiUrl();
+      if (!apiUrl) {
+        console.error('API URL is not set');
+        return null;
+      }
+      const headers = constructHeaders('', emailToken);
+      console.log(headers);
       const res = await fetch(`${apiUrl}/auth/verify-code`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-email-token': emailToken,
-          },
+        headers: headers,
           body: JSON.stringify({ code }),
         });
       if (!res.ok) {

@@ -34,3 +34,8 @@ variable "prod_api_url" {
   type = string
   description = "API URL for the prod environment"
 }
+
+variable "prod_api_key" {
+  type = string
+  description = "API key"
+}

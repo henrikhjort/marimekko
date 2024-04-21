@@ -115,6 +115,7 @@ For potential enhancements and known issues, please refer to the [Issues section
    Create a `.env.local` file in the `client` directory:
    ```
    NEXT_PUBLIC_API_URL=http://127.0.0.1:7071/api
+   NEXT_PUBLIC_API_KEY=API_KEY
    ```
 
 3. **Run the Development Server**
