@@ -57,7 +57,9 @@ const ProductContent: React.FC<ProductContentProps> = ({ product, image, handleI
           <span className="text-brand-gray-400">{product.category}</span>
           <Heading level={3}>{formatPrice(product.priceVat0Euro)}</Heading>
           <p>{product.description}</p>
-          <ColorPicker selectedColor={selectedColor} colors={product.colors} handleColorClick={handleColorClick} />
+          {product.colors.length > 0 && (
+            <ColorPicker selectedColor={selectedColor} colors={product.colors} handleColorClick={handleColorClick} />
+          )}
         </div>
         <OrderSamples onClick={() => alert('Not implemented')}>
           Request samples
