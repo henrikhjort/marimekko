@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import CodeLoginForm from '.';
@@ -17,7 +17,6 @@ jest.mock('@/lib/token', () => ({
 }));
 
 const mockLoginWithCode = jest.fn();
-const mockOnSuccess = jest.fn();
 
 beforeEach(() => {
   (useAuth as jest.Mock).mockReturnValue({

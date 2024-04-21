@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, FormEvent } from 'react';
 
-import Button from '../basic/Button';
-import Heading from '../basic/Heading';
+import Button from '../../basic/Button';
+import Heading from '../../basic/Heading';
 import { useAuth } from '@/context/AuthContext';
 
 type EmailFormProps = {
@@ -35,9 +35,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSuccess }) => {
     setLoading(true);
     setError('');
     event.preventDefault();
-    console.log('Email submitted:', email);
     const emailToken = await loginWithEmail(email);
-    console.log('Email token:', emailToken);
     if (emailToken && onSuccess) {
       onSuccess(emailToken);
     } else {
