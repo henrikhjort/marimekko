@@ -23,7 +23,7 @@ const ProductCatalog: React.FC= () => {
     },
     {
       title: 'An emblem of joy',
-      description: `So, Maija Isola designed Unikko to be an abstraction of a flower rather than a photorealistic rendition. Today, Unikko is a powerful emblem of joy and creativity, seamlessly integrated into Marimekko's design identity.`
+      description: `Maija Isola designed Unikko to be an abstraction of a flower rather than a photorealistic rendition. Today, Unikko is a powerful emblem of joy and creativity, seamlessly integrated into Marimekko's design identity.`
     }
   ]
 
