@@ -16,7 +16,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex md:flex-row flex-col w-full items-center justify-center bg-blue-100 min-h-screen login">
+    <div className="flex md:flex-row flex-col w-full items-center justify-center min-h-screen login">
       <div className="flex flex-col flex-1 w-full bg-brand-white md:min-h-screen justify-center items-center p-16">
         <AuthProvider>
           <EmailForm onSuccess={onSuccess}/>
