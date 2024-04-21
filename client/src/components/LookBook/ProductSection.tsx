@@ -49,7 +49,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ product, images, headin
   };
 
   return (
-    <section className="lookbook-product-section flex md:flex-row flex-col-reverse w-full md:h-[calc(100vh-150px)] md:space-x-4">
+    <section className="lookbook-product-section flex md:flex-row flex-col-reverse w-full md:min-h-[calc(100vh-150px)] md:space-x-4">
       {/* Left (Mobile second) side 1/2 width */}
       {/* Image grid and marketing text */}
       <div className="left-part flex md:flex-row flex-col flex-1 w-full">

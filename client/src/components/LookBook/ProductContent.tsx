@@ -39,7 +39,7 @@ const ProductContent: React.FC<ProductContentProps> = ({ product, image, handleI
   };
 
   return (
-    <div className="product-container flex md:flex-row flex-col m-2">
+    <div className="product-container flex sm:flex-row flex-col m-2">
       <div onClick={() => handleImageClick(1)} className="product-image-wrapper relative flex flex-1 flex-col cursor-pointer m-2">
         <Image
           priority

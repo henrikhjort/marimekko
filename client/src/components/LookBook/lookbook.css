@@ -8,6 +8,18 @@
   overflow: hidden;
 }
 
+@media (max-width: 480px) {
+  .product-image-wrapper {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-image-wrapper {
+    aspect-ratio: 1 / 1;
+  }
+}
+
 @media (max-width: 768px) {
   .product-image-wrapper {
     aspect-ratio: 2 / 3;
