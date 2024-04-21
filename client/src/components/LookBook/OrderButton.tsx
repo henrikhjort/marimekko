@@ -5,6 +5,17 @@ type OrderButtonProps = {
   children: React.ReactNode;
 }
 
+/**
+ * Order button component, styled for LookBook.
+ * 
+ * Props:
+ *  - onClick: function to call when button is clicked
+ *  - children: button text
+ * Usage:
+    <OrderButton onClick={() => alert('Not implemented')}>
+      Order
+    </OrderButton>
+ */
 const OrderButton: React.FC<OrderButtonProps> = ({ children, onClick }) => {
   return (
     <button 

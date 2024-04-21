@@ -2,10 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import Heading from '../basic/Heading';
-
 import type BrandImage from '../../../types/BrandImage';
-import type { Product } from '@/context/ProductContext';
 import './lookbook.css';
 
 type ImageGridProps = {
@@ -13,14 +10,28 @@ type ImageGridProps = {
   handleImageClick: (index: number) => void;
 };
 
+/**
+ * LookBook ImageGrid component.
+ * Renders a 4 column 2 row grid with images.
+ * First image takes up 2 columns and 2 rows.
+ * Second image takes up 2 columns 1 row.
+ * Third and fourth images take up 1 column 1 row.
+ * 
+ * Props:
+ *  - images: array of BrandImage (src, alt, productId) objects
+ *  - handleImageClick: function to open modal with image
+ * 
+ * Usage:
+ *  <ImageGrid images={images} handleImageClick={handleImageClick} />
+ */
 const ImageGrid: React.FC<ImageGridProps> = ({ images, handleImageClick }) => {
-  if (images.length !== 5) {
-    throw new Error('ImageGrid requires 5 images');
+  if (images.length < 4) {
+    throw new Error('ImageGrid requires at least 4 images');
   }
 
   return (
     <div className="image-grid flex md:flex-row flex-col justify-center grow w-full">
-      <div onClick={() => handleImageClick(1)} className="product-image-wrapper-small relative flex flex-1 flex-col cursor-pointer">
+      <div onClick={() => handleImageClick(0)} className="product-image-wrapper-small relative flex flex-1 flex-col cursor-pointer">
         {/* Left big image */}
           <Image
             priority

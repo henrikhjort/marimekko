@@ -5,6 +5,17 @@ import { useProducts } from '@/context/ProductContext';
 import { getImagesForProduct } from './images';
 import ProductSection from './ProductSection';
 
+/**
+ * Product catalog component.
+ * Subscribes to products context and renders a ProductSection for each product.
+ * Note: must be wrapped in ProductsProvider.
+ * If no products are available, returns null.
+ * 
+ * Usage:
+    <ProductProvider>
+      <ProductCatalog />
+    </ProductProvider>
+ */
 const ProductCatalog: React.FC= () => {
   const { products } = useProducts();
   if (!products || products.length === 0) {
@@ -33,7 +44,6 @@ const ProductCatalog: React.FC= () => {
       const images = getImagesForProduct(product.productId);
       return (
         <ProductSection
-          index={index}
           key={product.productId}
           product={product}
           images={images}

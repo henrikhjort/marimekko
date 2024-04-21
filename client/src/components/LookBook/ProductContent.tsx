@@ -15,6 +15,18 @@ type ProductContentProps = {
   handleImageClick: (index: number) => void;
 };
 
+/**
+ * LookBook Product content component.
+ * Renders product title, category, price, description, order button and image.
+ * 
+ * Props:
+ *  - product: Product object (name, category, description, productId, priceVat0Euro, description)
+ *  - image: BrandImage object (src, alt, productId)
+ *  - handleImageClick: function to open modal with image
+ * 
+ * Usage:
+ *  <ProductContent product={product} image={image} handleImageClick={handleImageClick} />
+ */
 const ProductContent: React.FC<ProductContentProps> = ({ product, image, handleImageClick }) => {
   return (
     <div className="product-container flex md:flex-row flex-col m-2">

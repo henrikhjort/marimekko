@@ -14,6 +14,26 @@ type GridProps = {
   handleImageClick: (index: number) => void;
 }
 
+/**
+ * LookBook grid component.
+ * Renders a grid with 4 images, a heading (H3) and a paragraph.
+ * 
+ * Props:
+ *  - images: array of BrandImage (src, alt, productId) objects
+ *  - headingText: heading content
+ *  - paragraphText: paragraph below heading
+ *  - product: Product object (name, category, description, productId, priceVat0Euro, description)
+ *  - handleImageClick: function to open modal with image
+ * 
+ * Usage:
+ * <Grid
+    product={product}
+    images={images}
+    headingText="Heading level 3"
+    paragraphText="This is a paragraph text."
+    handleImageClick={handleImageClick}
+ * />
+ */
 const Grid: React.FC<GridProps> = ({ images, product, headingText, paragraphText, handleImageClick }) => {
 
   return (

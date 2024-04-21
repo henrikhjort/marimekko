@@ -1,5 +1,7 @@
 import type BrandImage from "../../../types/BrandImage";
 
+// Match product ids to images
+// TODO: ideally the images would be fetched from the backend
 export const images: BrandImage[] = [
   {
     src: "/brandImages/juhlissaUnikko/juhlissa_unikko_1.png",

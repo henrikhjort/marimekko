@@ -4,6 +4,16 @@ type SeparatorProps = {
   hideOnMobile?: boolean;
 };
 
+/**
+ * Generic separator (straight horizontal line) component,
+ * Only visible on desktop by default.
+ * 
+ * Props:
+ *  - hideOnMobile: boolean, hide on mobile if true
+ * 
+ * Usage:
+ * <Separator hideOnMobile={true} />
+ */
 const Separator: React.FC<SeparatorProps> = ({ hideOnMobile }) => {
 
   /**

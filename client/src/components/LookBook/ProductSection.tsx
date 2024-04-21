@@ -3,22 +3,38 @@ import Image from 'next/image';
 import { Modal } from '@mantine/core';
 
 import Grid from './Grid';
-import ProductContent from './Product';
+import ProductContent from './ProductContent';
 
 import type BrandImage from '../../../types/BrandImage';
 import type { Product } from '@/context/ProductContext';
 
 type ProductSectionProps = {
-  index?: number;
   product: Product;
   images: BrandImage[];
   headingText: string;
   paragraphText: string;
 }
 
-const ProductSection: React.FC<ProductSectionProps> = ({ index, product, images, headingText, paragraphText }) => {
-  console.log(images);
-
+/**
+ * Product section component.
+ * A product section contains a grid with images and marketing text on the left side,
+ * and product content with an image on the right side.
+ * 
+ * Props:
+ *  - product: Product object (name, category, description, productId, priceVat0Euro, description)
+ *  - images: array of images related to this product id (src, alt, productId) objects
+ *  - headingText: marketing heading text used in the grid
+ *  - paragraphText: marketing paragraph text used in the grid
+ * Usage:
+    <ProductSection
+      key={product.productId}
+      product={product}
+      images={images}
+      headingText="This is a heading text."
+      paragraphText="This is a paragraph text."
+    />
+ */
+const ProductSection: React.FC<ProductSectionProps> = ({ product, images, headingText, paragraphText }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState<BrandImage | null>(null);
 

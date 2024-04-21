@@ -4,10 +4,31 @@ type HeadingProps = {
   level: 1 | 2 | 3 | 4 | 5;
   bold?: 'extrabold' | 'bold' | 'semibold' | 'medium' | 'normal';
   capitalize?: boolean;
-  children: string;
+  children: React.ReactNode;
   className?: string;
 }
 
+/**
+ * Generic heading component,
+ * Renders <h1> to <h5> based on level prop.
+ * 
+ * Props:
+ *  - level: 1 | 2 | 3 | 4 | 5
+ *  - bold: tailwindcss font class value
+ *  - capitalize: capitalize all letters when true
+ *  - children: React.ReactNode
+ *  - className: optional tailwindcss classnames
+ * 
+ * Usage:
+ * <Heading
+ *  level={1}
+ *  bold="extrabold"
+ *  capitalize={true}
+ *  className="mb-4"
+ * >
+ *  This is a H1 title with extra bold font, capitalized letters and margin bottom 4
+ * </Heading>
+ */
 const Heading: React.FC<HeadingProps> = ({ level, children, bold = 'normal', capitalize, className }) => {
 
   function renderHeading() {
