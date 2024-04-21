@@ -7,6 +7,11 @@ interface ProductContextType {
   products: Product[];
 }
 
+export type Color = {
+  name: string;
+  code: string;
+}
+
 export type Product = {
   id: string;
   name: string;
@@ -14,6 +19,7 @@ export type Product = {
   category: string;
   productId: string;
   priceVat0Euro: number;
+  colors: Color[];
 }
 
 // Initialize context with default values and types
@@ -22,6 +28,7 @@ const ProductContext = createContext<ProductContextType | undefined>(undefined);
 // ProductProvider component that wraps your app and provides a ProductContext
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  console.log('products:', products);
 
   useEffect(() => {
     async function fetchProducts() {

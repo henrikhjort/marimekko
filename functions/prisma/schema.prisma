@@ -29,6 +29,7 @@ model Product {
   description   String
   productId     String @unique
   priceVat0Euro Float
+  colors        Json
 }
 
 model Vat {
