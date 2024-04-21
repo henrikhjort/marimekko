@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import Heading from '../basic/Heading';
 import OrderButton from './OrderButton';
+import OrderSamples from './OrderSamples';
 import { formatPrice } from '@/lib/helpers';
 
 import type { Product } from '@/context/ProductContext';
@@ -48,6 +49,9 @@ const ProductContent: React.FC<ProductContentProps> = ({ product, image, handleI
           <Heading level={3}>{formatPrice(product.priceVat0Euro)}</Heading>
           <p>{product.description}</p>
         </div>
+        <OrderSamples onClick={() => alert('Not implemented')}>
+          Request samples
+        </OrderSamples>
         <OrderButton onClick={() => alert('Not implemented')}>
           Order
         </OrderButton>

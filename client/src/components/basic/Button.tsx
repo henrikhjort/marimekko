@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({ variant, children, onClick, type = "but
   const textColor = variant === 'black' ? 'text-brand-white' : 'text-brand-black';
 
   return (
-    <button disabled={disabled} type={type} onClick={onClick} className={`${background} ${textColor} p-2 w-${width} h-10`}>
+    <button disabled={disabled} type={type} onClick={onClick} className={`${background} ${textColor} hover:opacity-80 p-2 w-${width} h-10`}>
       {children}
     </button>
   )
