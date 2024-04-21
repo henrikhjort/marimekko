@@ -101,7 +101,7 @@ const ProfileMenu: React.FC = () => {
   }
 
   return (
-    <div className="absolute top-1 right-1">
+    <div className="">
       <Menu
         transitionProps={{ transition: 'pop-top-right' }}
         position="bottom-end"

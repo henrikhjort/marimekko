@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { AuthProvider } from "@/context/AuthContext";
+import Navbar from "@/components/basic/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <MantineProvider theme={theme}>
           <AuthProvider>
+            <Navbar links={[]}/>
             {children}
           </AuthProvider>
         </MantineProvider>
