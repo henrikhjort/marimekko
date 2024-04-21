@@ -129,7 +129,15 @@ For potential enhancements and known issues, please refer to the [Issues section
 There is a Github actions workflow that automatically runs client component tests.
 
 Note: Application deployment doesn't currently care about running the test suite first. Todo.
+```
+npm test
+```
+to run manually
 
 ### Functions
 
-Todo.
+Tests are ran as a task in the deployment workflow.
+```
+npm test
+```
+to run manually
