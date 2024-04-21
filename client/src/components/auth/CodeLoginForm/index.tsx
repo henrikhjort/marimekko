@@ -4,8 +4,8 @@ import React, { useState, FormEvent } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { getEmailToken } from '@/lib/token';
 
-import Heading from '../basic/Heading';
-import Button from '../basic/Button';
+import Heading from '../../basic/Heading';
+import Button from '../../basic/Button';
 
 type CodeLoginForm = {
   onSuccess?: () => void;

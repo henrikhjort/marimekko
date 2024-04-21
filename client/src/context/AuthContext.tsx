@@ -3,9 +3,8 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 
 import { storeEmailToken, storeAccessToken, getAccessToken, removeAccessToken, removeEmailToken } from '@/lib/token';
 import { getApiUrl } from '@/lib/helpers';
-import { log } from 'console';
 
-interface AuthContextType {
+export interface AuthContextType {
   user: User | null;
   loginWithEmail: (email: string) => Promise<string | null>;
   loginWithCode: (code: string, emailToken: string) => Promise<boolean>;
