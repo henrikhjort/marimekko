@@ -38,6 +38,7 @@ const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
 
   // Function to handle form submission
   const handleSubmit = async (event: FormEvent) => {
+    setLoading(true);
     event.preventDefault();
     const emailToken = getEmailToken();
     if (!emailToken) {
@@ -51,6 +52,7 @@ const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
     } else {
       setError('Invalid code');
     }
+    setLoading(false);
   };
 
   return (
