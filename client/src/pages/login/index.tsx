@@ -7,7 +7,6 @@ import { AuthProvider } from "@/context/AuthContext";
 import Heading from "@/components/basic/Heading";
 import Button from "@/components/basic/Button";
 import '../../app/globals.css';
-import './login.css';
 
 export default function Login() {
   const router = useRouter();

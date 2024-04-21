@@ -11,6 +11,15 @@ type CodeLoginForm = {
   onSuccess?: () => void;
 };
 
+/**
+ * Form component for logging in with login code.
+ *
+ * Props:
+ *  - onSuccess: function to call on successful login
+ * 
+ * Usage:
+    <CodeLoginForm onSuccess={onSuccess} />
+ */
 const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
   const { loginWithCode } = useAuth();
   const [code, setCode] = useState(["", "", "", ""]);

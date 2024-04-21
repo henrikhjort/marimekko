@@ -9,6 +9,15 @@ type EmailFormProps = {
   onSuccess?: (emailToken: string) => void;
 };
 
+/**
+ * Form component for logging in with email.
+ *
+ * Props:
+ *  - onSuccess: function to call on successful login
+ * 
+ * Usage:
+    <EmailForm onSuccess={onSuccess}/>
+ */
 const EmailForm: React.FC<EmailFormProps> = ({ onSuccess }) => {
   const { loginWithEmail } = useAuth();
   // State to hold the email value

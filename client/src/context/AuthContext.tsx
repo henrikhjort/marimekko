@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 
 import { storeEmailToken, storeAccessToken, getAccessToken, removeAccessToken, removeEmailToken } from '@/lib/token';
 import { getApiUrl } from '@/lib/helpers';
+import { log } from 'console';
 
 interface AuthContextType {
   user: User | null;
@@ -20,14 +21,40 @@ type User = {
   companyId: number;
 }
 
-// Initialize context with default values and types
+/**
+ * AuthContext module.
+ *
+ * Provides authentication-related services to the application through context.
+ * Exposes functionalities to log in a user via email or verification code,
+ * log out, and check user authentication status.
+ *
+ * This module should be imported and used within components that require
+ * authentication information or functionalities.
+ *
+ * Usage:
+ * Wrap your root component with `<AuthProvider>` to provide authentication context
+ * to the rest of your app.
+ *
+ *
+ * <AuthProvider>
+ *   <App />
+ * </AuthProvider>
+ *
+ *
+ * Use `useAuth` hook to access auth functions and user state in functional components.
+ */
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // AuthProvider component that wraps your app and provides an AuthContext
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  console.log('User:', user);
 
+  /**
+   * Fetches the user data from the API when the component mounts.
+   * If the user is not found, clears the access token.
+   * 
+   * This effect runs once when the component mounts.
+   **/
   useEffect(() => {
     async function fetchUser() {
       const accessToken = getAccessToken();
@@ -41,14 +68,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         });
         if (!res.ok) {
           console.log('Error fetching user:', res);
-          // Clear the access token if the user is not found
-          removeAccessToken();
+          // If there is an error, clear all tokens and user state.
+          logout();
           return;
         }
         const result = await res.json();
         setUser(result.data);
       } catch (error) {
         console.error('Error fetching user:', error);
+        // If there is an error, clear all tokens and user state.
+        logout();
       }
     }
     fetchUser();
@@ -64,6 +93,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const emailToken = await verifyEmail(email);
     if (!emailToken) {
       console.log('Email not verified.')
+      // If there is an error, clear all tokens and user state.
+      logout();
       return null;
     }
     storeEmailToken(emailToken);
@@ -74,6 +105,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const accessToken = await verifyCode(code, emailToken);
     if (!accessToken) {
       console.log('Code not verified.')
+      // If there is an error, clear all tokens and user state.
+      logout();
       return false;
     }
     storeAccessToken(accessToken);
@@ -106,10 +139,20 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       return emailToken;
     } catch (error) {
       console.error('Error verifying email:', error);
+      // If there is an error, clear all tokens and user state.
+      logout();
       return null;
     }
   }
 
+  /**
+   * Verifies the codu and returns an access token if successful.
+   * 
+   * @param code User input code
+   * @param emailToken Temporary email token
+   * 
+   * @returns Access token if code is verified, otherwise null
+   */
   async function verifyCode(code: string, emailToken: string): Promise<string | null> {
     try {
       const apiUrl = getApiUrl();
@@ -121,7 +164,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           },
           body: JSON.stringify({ code }),
         });
-      console.log(res);
       if (!res.ok) {
         return null;
       }
@@ -130,10 +172,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       return accessToken;
     } catch (error) {
       console.error('Error verifying email:', error);
+      // If there is an error, clear all tokens and user state.
+      logout();
       return null;
     }
   }
 
+  /**
+   * Logs out the user, clearing all tokens and user state.
+   */
   const logout = () => {
     setUser(null);
     removeAccessToken();

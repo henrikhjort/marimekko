@@ -11,6 +11,14 @@ import {
 
 import { useAuth } from '@/context/AuthContext';
 
+/**
+ * Profile menu component.
+ * Subscribes to the AuthContext to display a dropdown menu with user profile options.
+ * Note: must be wrapped in an AuthProvider to work.
+ * 
+ * Usage:
+    <ProfileMenu />
+ */
 const ProfileMenu: React.FC = () => {
   const router = useRouter();
   const { user, logout } = useAuth();
