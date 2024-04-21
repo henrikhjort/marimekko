@@ -45,6 +45,7 @@ const CodeLoginForm: React.FC<CodeLoginForm> = ({ onSuccess }) => {
       console.log('Email token not found.');
       return;
     }
+    // Combine the code array into a single string
     const fullCode = code.join('');
     const success = await loginWithCode(fullCode, emailToken);
     if (success && onSuccess) {
