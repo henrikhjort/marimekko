@@ -22,6 +22,9 @@ code: 1234
 - Frontend powered by Next.js and hosted on Vercel
 - MongoDB
 
+### API endpoints
+See the [functions documentation](/functions/README.md)
+
 ### Future Improvements
 For potential enhancements and known issues, please refer to the [Issues section](https://github.com/henrikhjort/marimekko/issues) on GitHub.
 
