@@ -8,6 +8,9 @@ Welcome to the setup guide for the Marimekko Assignment. Below you will find all
 ### Live site
 Access the live application here: [Marimekko assignment](https://marimekko-assignment.vercel.app)
 
+<img width="1705" alt="image" src="https://github.com/henrikhjort/marimekko/assets/25221636/c4c3e2c5-fcb0-4c42-ba97-bf741ab1ef24">
+
+
 You can log in using the following test credentials:
 ```
 email: maija.poppanen@email.com
