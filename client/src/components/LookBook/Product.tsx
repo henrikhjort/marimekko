@@ -26,11 +26,11 @@ const ProductContent: React.FC<ProductContentProps> = ({ product, image, handleI
           layout="fill"
           objectFit="cover"
           objectPosition="top"
-          
+          className='absolute inset-0 md:p-2'
         />
       </div>
-      <div className="relative flex flex-1 flex-col justify-start m-2 space-y-2">
-        <div className="flex md:flex-1 flex-col justify-start space-y-2">
+      <div className="relative flex flex-1 flex-col justify-start m-2 space-y-2 md:pb-2">
+        <div className="flex md:flex-1 flex-col justify-start space-y-2 mb-2">
           <Heading capitalize={true} level={2}>{product.name}</Heading>
           <span className="text-brand-gray-400">{product.category}</span>
           <Heading level={3}>{formatPrice(product.priceVat0Euro)}</Heading>

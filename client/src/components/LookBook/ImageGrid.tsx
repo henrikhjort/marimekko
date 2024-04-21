@@ -19,8 +19,8 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, handleImageClick }) => {
   }
 
   return (
-    <div className="image-grid flex md:flex-row flex-col grow w-full">
-      <div onClick={() => handleImageClick(0)} className="large-image product-image-wrapper-small relative md:flex flex-col grow cursor-pointer">
+    <div className="image-grid flex md:flex-row flex-col justify-center grow w-full">
+      <div onClick={() => handleImageClick(1)} className="product-image-wrapper-small relative flex flex-1 flex-col cursor-pointer">
         {/* Left big image */}
           <Image
             priority

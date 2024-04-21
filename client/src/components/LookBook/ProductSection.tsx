@@ -8,7 +8,7 @@ import ProductContent from './Product';
 import type BrandImage from '../../../types/BrandImage';
 import type { Product } from '@/context/ProductContext';
 
-type SectionProps = {
+type ProductSectionProps = {
   index?: number;
   product: Product;
   images: BrandImage[];
@@ -16,7 +16,7 @@ type SectionProps = {
   paragraphText: string;
 }
 
-const Section: React.FC<SectionProps> = ({ index, product, images, headingText, paragraphText }) => {
+const ProductSection: React.FC<ProductSectionProps> = ({ index, product, images, headingText, paragraphText }) => {
   console.log(images);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -56,7 +56,8 @@ const Section: React.FC<SectionProps> = ({ index, product, images, headingText, 
         opened={modalOpen}
         onClose={closeModal}
         size="auto"
-        withCloseButton={false}
+        centered
+        withCloseButton={true}
       >
         <div className="min-h-100vh">
           {modalImage && (
@@ -73,4 +74,4 @@ const Section: React.FC<SectionProps> = ({ index, product, images, headingText, 
   );
 };
 
-export default Section;
+export default ProductSection;

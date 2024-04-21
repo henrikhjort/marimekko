@@ -8,7 +8,7 @@ type OrderButtonProps = {
 const OrderButton: React.FC<OrderButtonProps> = ({ children, onClick }) => {
   return (
     <button 
-      className="flex flex-col items-center justify-center bg-brand-black w-80 h-20 p-2"
+      className="flex flex-col items-center justify-center bg-brand-black md:w-80 h-14 p-2"
       onClick={onClick}
     >
       <span
