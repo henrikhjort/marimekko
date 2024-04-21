@@ -91,10 +91,12 @@ For potential enhancements and known issues, please refer to the [Issues section
    JWT_SECRET=your_jwt_secret
    ```
 
-3. **Seed the Database**
+3. **Create local.settings.json**
    ```bash
-   npm run seed
+   touch local.settings.json
    ```
+   Please refer to local.settings.template.json
+   The file content should be good as is.
 
 4. **Start the Functions App**
    ```bash
