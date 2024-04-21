@@ -120,3 +120,14 @@ For potential enhancements and known issues, please refer to the [Issues section
    npm run dev
    ```
 
+### Tests
+
+#### Client
+
+There is a Github actions workflow that automatically runs client component tests.
+
+Note: Application deployment doesn't currently care about running the test suite first. Todo.
+
+### Functions
+
+Todo.
